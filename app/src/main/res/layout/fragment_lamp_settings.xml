@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFCFC"
+    tools:context=".Fragments.Lamp.LampSettingsFragment">
+
+    <TextView
+        android:id="@+id/textViewLampNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#40C4FF"
+        android:text="LAMP 1 / 2 / 3"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="225dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="62dp"
+        android:background="#40C4FF"
+        android:text="LAMP STATUS: ON"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/switchOnOff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLampNumber" />
+
+    <Switch
+        android:id="@+id/switchOnOff"
+        android:layout_width="121dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#40C4FF"
+        android:switchPadding="10sp"
+        android:textAlignment="center"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:theme="@style/SwitchTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLampNumber"
+        tools:checked="true" />
+
+    <TextView
+        android:id="@+id/textViewHue"
+        android:layout_width="357dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="15dp"
+        android:background="#40C4FF"
+        android:text="HUE: 150"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <SeekBar
+        android:id="@+id/progressBarHue"
+        android:layout_width="356dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:max="255"
+        android:progress="150"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHue" />
+
+    <TextView
+        android:id="@+id/textViewBrightness"
+        android:layout_width="357dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="15dp"
+        android:background="#40C4FF"
+        android:text="BRIGHTNESS: 150"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarHue" />
+
+    <SeekBar
+        android:id="@+id/progressBarBrightness"
+        android:layout_width="356dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:max="255"
+        android:progress="150"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBrightness" />
+
+    <TextView
+        android:id="@+id/textViewLampGroup"
+        android:layout_width="357dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="80dp"
+        android:background="#40C4FF"
+        android:text="GROUP: "
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarBrightness" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
