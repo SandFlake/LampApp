@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/frameLayout"
     android:background="#FCFCFC"
     tools:context=".Fragments.Lamp.LampSettingsFragment">
 
@@ -22,13 +23,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewLampStatus"
         android:layout_width="225dp"
         android:layout_height="34dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="62dp"
         android:background="#40C4FF"
-        android:text="LAMP STATUS: ON"
+        android:text="LAMP: OFF"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -44,15 +45,16 @@
         android:layout_marginTop="62dp"
         android:layout_marginEnd="15dp"
         android:backgroundTint="#40C4FF"
+        android:checked="false"
         android:switchPadding="10sp"
         android:textAlignment="center"
-        android:textOff="OFF"
-        android:textOn="ON"
+        android:textOff="LAMP: OFF"
+        android:textOn="LAMP: ON"
         android:theme="@style/SwitchTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textViewLampStatus"
         app:layout_constraintTop_toBottomOf="@+id/textViewLampNumber"
-        tools:checked="true" />
+        tools:checked="false" />
 
     <TextView
         android:id="@+id/textViewHue"
@@ -69,7 +71,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLampStatus" />
 
     <SeekBar
         android:id="@+id/progressBarHue"
@@ -79,6 +81,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:max="255"
+        android:min="0"
         android:progress="150"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +112,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:max="255"
+        android:min="0"
         android:progress="150"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,6 +132,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBarBrightness" />
+
+    <Button
+        android:id="@+id/btnAddGroup"
+        android:layout_width="353dp"
+        android:layout_height="67dp"
+        android:background="#BFECFF"
+        android:text="ADD TO GROUP"
+        android:textAlignment="center"
+        android:textColor="#FF4081"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLampGroup"
+        app:layout_constraintVertical_bias="0.107" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
