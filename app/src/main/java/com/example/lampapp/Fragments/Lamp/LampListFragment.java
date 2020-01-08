@@ -14,6 +14,7 @@ import com.example.lampapp.R;
 
 import androidx.fragment.app.Fragment;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -45,7 +46,6 @@ public class LampListFragment extends Fragment {
         this.controller = controller;
     }
 
-    // Test method for listView
     public void initList() {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, lampList);
         listViewLamps.setAdapter(adapter);
@@ -56,7 +56,14 @@ public class LampListFragment extends Fragment {
         listViewLamps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                controller.setFragment(lampSettingsFragment);
+                controller.setFragment(controller.lampSettingsFragment);
+            }
+        });
+
+        listViewGroups.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                controller.setFragment(controller.lampGroupFragment);
             }
         });
     }

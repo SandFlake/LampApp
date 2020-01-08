@@ -4,14 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/containerFrameLayout"></FrameLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity"
+    android:id="@+id/container" />
 
 
 

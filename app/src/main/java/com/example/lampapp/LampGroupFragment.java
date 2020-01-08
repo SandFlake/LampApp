@@ -1,4 +1,5 @@
-package com.example.lampapp.Fragments.Lamp;
+package com.example.lampapp;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,26 +11,29 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.lampapp.Controllers.Controller;
-import com.example.lampapp.R;
 
 import androidx.fragment.app.Fragment;
 
-public class LampSettingsFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class LampGroupFragment extends Fragment {
 
     private Controller controller;
-    private TextView tvLampNumber, tvLampStatus, tvHue, tvBrightness, tvLampGroup;
-    private Switch lampSwitch;
-    private SeekBar progressBarHue, progressBarBrightness;
-    private Button buttonAddGroup;
+    private TextView tvGroupName, tvLampStatusGroup, tvHueGroup, tvBrightnessGroup, tvLampGroup;
+    private Switch lampSwitchGroup;
+    private SeekBar progressBarHueGroup, progressBarBrightnessGroup;
+    private Button buttonDeleteGroup;
 
-    public LampSettingsFragment() {
+    public LampGroupFragment() {
         // Required empty public constructor
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_lamp_settings, container, false);
-        initComponents(view);
+        View view = inflater.inflate(R.layout.fragment_group_settings, container, false);
+        initializeComponents(view);
         setLampNumber();
         setLampStatus();
         setHueProgessbar();
@@ -39,24 +43,28 @@ public class LampSettingsFragment extends Fragment {
         return view;
     }
 
-    private void initComponents(View view) {
-        tvLampNumber = view.findViewById(R.id.textViewLampNumber);
-        tvLampStatus = view.findViewById(R.id.textViewLampStatus);
-        tvHue = view.findViewById(R.id.textViewHue);
-        tvBrightness = view.findViewById(R.id.textViewBrightness);
-        tvLampGroup = view.findViewById(R.id.textViewLampGroup);
-        progressBarHue = view.findViewById(R.id.progressBarHue);
-        progressBarBrightness = view.findViewById(R.id.progressBarBrightness);
-        buttonAddGroup = view.findViewById(R.id.btnAddGroup);
-        buttonAddGroup.setOnClickListener(new View.OnClickListener() {
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    public void initializeComponents(View view) {
+        tvGroupName = view.findViewById(R.id.textViewGroupName);
+        tvLampStatusGroup = view.findViewById(R.id.textViewGroupLampStatus);
+        tvHueGroup = view.findViewById(R.id.textViewHueGroup);
+        tvBrightnessGroup = view.findViewById(R.id.textViewBrightnessGroup);
+        tvLampGroup = view.findViewById(R.id.textViewLampGroupName);
+        lampSwitchGroup = view.findViewById(R.id.switchGroupOnOff);
+        progressBarBrightnessGroup = view.findViewById(R.id.progressBarBrightnessGroup);
+        progressBarHueGroup = view.findViewById(R.id.progressBarHueGroup);
+        buttonDeleteGroup = view.findViewById(R.id.btnDeleteGroup);
+        buttonDeleteGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // add to group
             }
         });
 
-        lampSwitch = view.findViewById(R.id.switchOnOff);
-        lampSwitch.setOnClickListener(new View.OnClickListener() {
+        lampSwitchGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkLampOnOff();
@@ -64,25 +72,21 @@ public class LampSettingsFragment extends Fragment {
         });
     }
 
-    public void setController(Controller controller) {
-        this.controller = controller;
-    }
-
     public void setLampNumber() {
-        tvLampNumber.setText("LAMP "); // lägg till lampnr som skickas me när man klickar i listan i lampListFragment
+        tvGroupName.setText("GROUP"); // lägg till lampnr som skickas me när man klickar i listan i lampListFragment
         // eller grupp om de e grupp
     }
 
     public void setLampStatus() {
-        tvLampStatus.setText("LAMP: OFF"); // om den är på eller av direkt
+        tvLampStatusGroup.setText("LAMPS: OFF"); // om den är på eller av direkt
     }
 
     public void checkLampOnOff() {
-        if (lampSwitch.isChecked()) {
-            tvLampStatus.setText(lampSwitch.getTextOn());
+        if (lampSwitchGroup.isChecked()) {
+            tvLampStatusGroup.setText(lampSwitchGroup.getTextOn());
             // stäng på lampan
         } else {
-            tvLampStatus.setText(lampSwitch.getTextOff());
+            tvLampStatusGroup.setText(lampSwitchGroup.getTextOff());
             // stäng av lampan
         }
     }
@@ -97,10 +101,10 @@ public class LampSettingsFragment extends Fragment {
     }
 
     public void getBrightnessProgressbar() {
-        progressBarBrightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        progressBarBrightnessGroup.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tvBrightness.setText("BRIGHTNESS: " + progressBarBrightness.getProgress());
+                tvBrightnessGroup.setText("BRIGHTNESS: " + progressBarBrightnessGroup.getProgress());
             }
 
             @Override
@@ -116,10 +120,10 @@ public class LampSettingsFragment extends Fragment {
     }
 
     public void getHueProgressbar() {
-        progressBarHue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        progressBarHueGroup.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                tvHue.setText("HUE: " + progressBarHue.getProgress());
+                tvHueGroup.setText("HUE: " + progressBarHueGroup.getProgress());
             }
 
             @Override
@@ -133,7 +137,6 @@ public class LampSettingsFragment extends Fragment {
             }
         });
     }
-
 
 
 }

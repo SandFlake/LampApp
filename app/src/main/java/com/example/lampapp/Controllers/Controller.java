@@ -6,6 +6,7 @@ import com.example.lampapp.Controllers.Helpers.MQQTHelper;
 import com.example.lampapp.Fragments.Bridge.BridgeListFragment;
 import com.example.lampapp.Fragments.Lamp.LampListFragment;
 import com.example.lampapp.Fragments.Lamp.LampSettingsFragment;
+import com.example.lampapp.LampGroupFragment;
 import com.example.lampapp.MainActivity;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -18,9 +19,10 @@ public class Controller {
 
     private MainActivity mainActivity;
     private MQQTHelper mqttHelper;
-    private BridgeListFragment bridgeListFragment;
-    private LampListFragment lampListFragment;
-    private LampSettingsFragment lampSettingsFragment;
+    public BridgeListFragment bridgeListFragment;
+    public LampListFragment lampListFragment;
+    public LampSettingsFragment lampSettingsFragment;
+    public LampGroupFragment lampGroupFragment;
 
     public Controller(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -31,14 +33,16 @@ public class Controller {
         bridgeListFragment = new BridgeListFragment();
         lampListFragment = new LampListFragment();
         lampSettingsFragment = new LampSettingsFragment();
-        mainActivity.setFragment(lampSettingsFragment);
+        lampGroupFragment = new LampGroupFragment();
+        mainActivity.setFragment(lampListFragment, false);
         lampSettingsFragment.setController(this);
         lampListFragment.setController(this);
+        lampGroupFragment.setController(this);
         startMqtt();
     }
 
     public void setFragment(Fragment fragment) {
-        mainActivity.setFragment(fragment);
+        mainActivity.setFragment(fragment, true);
     }
 
     ///////////////////// MQQT Methods //////////////////////////////////////
