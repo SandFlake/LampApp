@@ -22,6 +22,13 @@ public class LampSettingsFragment extends Fragment {
     private SeekBar progressBarHue, progressBarBrightness;
     private Button buttonAddGroup;
 
+    public int hue; // måste läsa in senaste värdet eller värdet från progressbar innan vi skickar in
+    public int brightness; // måste läsa in senaste värdet eller värdet från progressbar innan vi skickar in
+    public String exampleString = "{\"on\": true, \"hue\":" + 1 + ", \"sat\":" + 255 + ", \"bri\":" + 1 + "\"}";  // ta inte bort den </3 men värdena 10, 255 osv ska ändras till de vi ändrar
+    public String stringToSend = "";
+
+    public boolean lampIsAvailable = false; /////////////// vet inte hur vi ska använda det riktigt
+
     public LampSettingsFragment() {
         // Required empty public constructor
     }
@@ -30,12 +37,13 @@ public class LampSettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lamp_settings, container, false);
         initComponents(view);
-        setLampNumber();
+        setLampName();
         setLampStatus();
-        setHueProgessbar();
-        setBrightnessProgessbar();
-        getHueProgressbar();
+        setLampHue();
+        setLampBrightness();
+
         getBrightnessProgressbar();
+        getHueProgressbar();
         return view;
     }
 
@@ -64,43 +72,79 @@ public class LampSettingsFragment extends Fragment {
         });
     }
 
+    ////////////// SET METHODS ///////////////
+
     public void setController(Controller controller) {
         this.controller = controller;
     }
 
-    public void setLampNumber() {
-        tvLampNumber.setText("LAMP "); // lägg till lampnr som skickas me när man klickar i listan i lampListFragment
-        // eller grupp om de e grupp
+    public void setLampName() {
+        Bundle args = getArguments();
+        tvLampNumber.setText(args.getString("nameOfLamp"));
     }
 
     public void setLampStatus() {
-        tvLampStatus.setText("LAMP: OFF"); // om den är på eller av direkt
+        // lampSwitch.isChecked();
     }
+
+    public void setLampHue() {
+        // progressBarHue.setProgress();
+    }
+
+    public void setLampBrightness() {
+        //  progressBarBrightness.setProgress();
+    }
+
+    //////////// GET METHODS /////////////////////////////
+
+    // Vi behöver spara allting - namn, status, hue & brightness
+    // Göra det genom sharedPreferences? Eller på ngt annat sätt
+    // Tänker att man borde kunna koppla alla värden till namnet pga varje lampa heter något unikt (I guess?..)
+    // hämtar lampNamnet (setLampName) genom Bundle men vet inte om det blir lika smidigt för att spara..
+    // och tänker att det blir lättare att hålla koll om man har en åtskild GET & SET metod för varje värde..
+
+    public void getLampName() {
+        // kanske borde returnera String ändå..
+        // eller så skippar vi denna då den hämtas in i setLampName redan. Kan koppla till variabel om de behövs.
+    }
+
+    public void getLampStatus() {
+        // hämta aktuellt eller senast sparade
+    }
+
+    public void getLampHue() {
+        // hue = hämta aktuellt värde eller senast sparade
+    }
+
+    public void getLampBrightness() {
+        // brightness = hämta aktuellt värde eller senast sparade
+    }
+
+    ///////////////////////////////////////////////////////
 
     public void checkLampOnOff() {
         if (lampSwitch.isChecked()) {
             tvLampStatus.setText(lampSwitch.getTextOn());
-            // stäng på lampan
+            // här ska vi spara/uppdatera varje gång värdet ändras
         } else {
             tvLampStatus.setText(lampSwitch.getTextOff());
-            // stäng av lampan
+            // här ska vi spara/uppdatera varje gång värdet ändras
         }
     }
 
-    public void setHueProgessbar() {
-        // progressBarHue.setProgress(); sätt den till whatever den är/var sist
-    }
-
-
-    public void setBrightnessProgessbar() {
-        // sätt den till whatever den är/var sist
+    public void updateStringToSend(String changedValue) {
+        // blir nog fucked eftersom vi inte vet om det är STATUS, HUE eller BRIGHTNESS vi skickar in
+        // ha 3st seperade metoder? idk..
     }
 
     public void getBrightnessProgressbar() {
         progressBarBrightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 tvBrightness.setText("BRIGHTNESS: " + progressBarBrightness.getProgress());
+                brightness = progressBarBrightness.getProgress();
+                // här ska vi spara/uppdatera varje gång värdet ändras
             }
 
             @Override
@@ -117,9 +161,12 @@ public class LampSettingsFragment extends Fragment {
 
     public void getHueProgressbar() {
         progressBarHue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 tvHue.setText("HUE: " + progressBarHue.getProgress());
+                hue = progressBarHue.getProgress();
+                // här ska vi spara/uppdatera varje gång värdet ändras
             }
 
             @Override
@@ -133,7 +180,4 @@ public class LampSettingsFragment extends Fragment {
             }
         });
     }
-
-
-
 }

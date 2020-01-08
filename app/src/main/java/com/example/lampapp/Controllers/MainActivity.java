@@ -1,9 +1,10 @@
-package com.example.lampapp;
+package com.example.lampapp.Controllers;
 
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.example.lampapp.Controllers.Controller;
+import com.example.lampapp.R;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

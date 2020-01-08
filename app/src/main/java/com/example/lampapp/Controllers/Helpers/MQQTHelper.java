@@ -77,7 +77,6 @@ public class MQQTHelper {
                     disconnectedBufferOptions.setDeleteOldestMessages(false);
                     mqttAndroidClient.setBufferOpts(disconnectedBufferOptions);
                     subscribeToTopic();
-                    publish();
                 }
 
                 @Override
@@ -114,9 +113,9 @@ public class MQQTHelper {
     }
 
 
-    public void publish() {
+    public void publish(String stringToSend) {
         String topic = "Test";
-        String payload = "the payload";
+        String payload = stringToSend;
         byte[] encodedPayload = new byte[0];
         try {
             encodedPayload = payload.getBytes("UTF-8");

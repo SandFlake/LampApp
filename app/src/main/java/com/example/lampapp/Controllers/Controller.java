@@ -6,8 +6,7 @@ import com.example.lampapp.Controllers.Helpers.MQQTHelper;
 import com.example.lampapp.Fragments.Bridge.BridgeListFragment;
 import com.example.lampapp.Fragments.Lamp.LampListFragment;
 import com.example.lampapp.Fragments.Lamp.LampSettingsFragment;
-import com.example.lampapp.LampGroupFragment;
-import com.example.lampapp.MainActivity;
+import com.example.lampapp.Fragments.Lamp.LampGroupFragment;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
@@ -18,7 +17,7 @@ import androidx.fragment.app.Fragment;
 public class Controller {
 
     private MainActivity mainActivity;
-    private MQQTHelper mqttHelper;
+    public MQQTHelper mqttHelper;
     public BridgeListFragment bridgeListFragment;
     public LampListFragment lampListFragment;
     public LampSettingsFragment lampSettingsFragment;

@@ -1,4 +1,4 @@
-package com.example.lampapp;
+package com.example.lampapp.Fragments.Lamp;
 
 
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.lampapp.Controllers.Controller;
+import com.example.lampapp.R;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,10 +21,11 @@ import androidx.fragment.app.Fragment;
 public class LampGroupFragment extends Fragment {
 
     private Controller controller;
-    private TextView tvGroupName, tvLampStatusGroup, tvHueGroup, tvBrightnessGroup, tvLampGroup;
+    private TextView tvGroupName, tvLampStatusGroup, tvHueGroup, tvBrightnessGroup, tvLampsInGroup, tvLampGroup;
     private Switch lampSwitchGroup;
     private SeekBar progressBarHueGroup, progressBarBrightnessGroup;
     private Button buttonDeleteGroup;
+    public String lampsInGroup = "";
 
     public LampGroupFragment() {
         // Required empty public constructor
@@ -53,6 +55,7 @@ public class LampGroupFragment extends Fragment {
         tvHueGroup = view.findViewById(R.id.textViewHueGroup);
         tvBrightnessGroup = view.findViewById(R.id.textViewBrightnessGroup);
         tvLampGroup = view.findViewById(R.id.textViewLampGroupName);
+        tvLampsInGroup = view.findViewById(R.id.textViewLampsInGroup);
         lampSwitchGroup = view.findViewById(R.id.switchGroupOnOff);
         progressBarBrightnessGroup = view.findViewById(R.id.progressBarBrightnessGroup);
         progressBarHueGroup = view.findViewById(R.id.progressBarHueGroup);
@@ -77,9 +80,14 @@ public class LampGroupFragment extends Fragment {
         // eller grupp om de e grupp
     }
 
+    public void addLampsNameToLabel() {
+        tvLampsInGroup.setText(lampsInGroup);
+    }
+
     public void setLampStatus() {
         tvLampStatusGroup.setText("LAMPS: OFF"); // om den är på eller av direkt
     }
+
 
     public void checkLampOnOff() {
         if (lampSwitchGroup.isChecked()) {
