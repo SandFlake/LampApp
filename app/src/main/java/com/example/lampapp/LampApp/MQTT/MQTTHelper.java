@@ -1,7 +1,10 @@
-package com.example.lampapp.Controllers.Helpers;
+package com.example.lampapp.LampApp.MQTT;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.example.lampapp.LampApp.MainActivity;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.DisconnectedBufferOptions;
@@ -15,42 +18,42 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.io.UnsupportedEncodingException;
 
-public class MQQTHelper {
+public class MQTTHelper {
     public MqttAndroidClient mqttAndroidClient;
 
-    final String serverUri = "tcp://farmer.cloudmqtt.com:12987";
-
-    final String clientId = "Marcel";
-    final String subscriptionTopic = "Test";
-
+    final String serverURL = "tcp://farmer.cloudmqtt.com:12987";
     final String username = "xbwjslxs";
     final String password = "w72O5sZkZnUW";
+    private MainActivity mainActivity;
 
-    public MQQTHelper(Context context) {
-        mqttAndroidClient = new MqttAndroidClient(context, serverUri, clientId);
+    public MQTTHelper(Context context) {
+        mqttAndroidClient = new MqttAndroidClient(context, serverURL, username);
         mqttAndroidClient.setCallback(new MqttCallbackExtended() {
+
             @Override
             public void connectComplete(boolean b, String s) {
-                Log.w("mqtt", s);
+                Log.d("conComplete", "connectComplete: " + b);
+                Toast.makeText(mainActivity.getApplicationContext(), "CONNECTION COMPLETE", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void connectionLost(Throwable throwable) {
-
+                Log.d("conLost", "connectionLost: " + throwable);
             }
 
             @Override
             public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
-                Log.w("Mqtt", mqttMessage.toString());
+                Log.d("msgArr", "Message Arrived: " + mqttMessage.toString());
+                Toast.makeText(mainActivity.getApplicationContext(), "MESSAGE ARRIVED: " + mqttMessage.toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
-
             }
         });
-        connect();
 
+        connect();
     }
 
     public void setCallback(MqttCallbackExtended callback) {
@@ -65,23 +68,21 @@ public class MQQTHelper {
         mqttConnectOptions.setPassword(password.toCharArray());
 
         try {
-
             mqttAndroidClient.connect(mqttConnectOptions, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-
                     DisconnectedBufferOptions disconnectedBufferOptions = new DisconnectedBufferOptions();
                     disconnectedBufferOptions.setBufferEnabled(true);
                     disconnectedBufferOptions.setBufferSize(100);
                     disconnectedBufferOptions.setPersistBuffer(false);
                     disconnectedBufferOptions.setDeleteOldestMessages(false);
                     mqttAndroidClient.setBufferOpts(disconnectedBufferOptions);
-                    subscribeToTopic();
+
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Log.w("Mqtt", "Failed to connect to: " + serverUri + exception.toString());
+                    Log.d("serverConnectionFailure", "Failed to connect to: " + serverURL);
                 }
             });
 
@@ -92,30 +93,41 @@ public class MQQTHelper {
     }
 
 
-    private void subscribeToTopic() {
+    public void subscribeToTopic(final String topic) {
         try {
-            mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() {
+            mqttAndroidClient.subscribe(topic, 0, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Log.w("Mqtt", "Subscribed!");
+                    Log.w("subSuccess", "Subscribed to topic!!");
+                    Toast.makeText(mainActivity.getApplicationContext(), "SUBBED TO TOPIC: " + topic, Toast.LENGTH_SHORT).show();
+
                 }
+
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Log.w("Mqtt", "Subscribed fail!");
+                    Log.d("subFailed", "Sub to topic failed: " + exception);
+                    Toast.makeText(mainActivity.getApplicationContext(), "FAILED TO SUB TO TOPIC" + topic, Toast.LENGTH_SHORT).show();
+
                 }
             });
 
         } catch (MqttException ex) {
-            System.err.println("Exceptionst subscribing");
             ex.printStackTrace();
         }
     }
 
+    public void unsubscribeToTopic(String topic) {
+        try {
+            mqttAndroidClient.unsubscribe(topic);
 
-    public void publish(String stringToSend) {
-        String topic = "Test";
-        String payload = stringToSend;
+        } catch (MqttException ex) {
+            System.err.println("Exception whilst subscribing");
+            ex.printStackTrace();
+        }
+    }
+
+    public void publish(String topic, String payload) {
         byte[] encodedPayload = new byte[0];
         try {
             encodedPayload = payload.getBytes("UTF-8");
@@ -127,4 +139,3 @@ public class MQQTHelper {
 
     }
 }
-

@@ -1,11 +1,595 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.MainActivity"
-    android:id="@+id/container" />
+    tools:context=".LampApp.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="411dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="5dp"
+            android:autoText="false"
+            android:background="#00B8D4"
+            android:text="LAMP 3"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLampTwo" />
+
+        <SeekBar
+            android:id="@+id/seekBarBrightnessLampTwo"
+            android:layout_width="384dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBrightnessLampTwo" />
+
+        <SeekBar
+            android:id="@+id/seekBarHueLampTwo"
+            android:layout_width="384dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHueLampTwo" />
+
+        <TextView
+            android:id="@+id/tvBrightnessLampTwo"
+            android:layout_width="294dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="52dp"
+            android:autoText="false"
+            android:background="#40C4FF"
+            android:text="BRIGHTNESS: "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchLampTwo" />
+
+        <TextView
+            android:id="@+id/tvHueLampTwo"
+            android:layout_width="294dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="51dp"
+            android:autoText="false"
+            android:background="#40C4FF"
+            android:text="HUE: "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarBrightnessLampTwo" />
+
+        <Switch
+            android:id="@+id/switchLampTwo"
+            android:layout_width="295dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="51dp"
+            android:background="#40C4FF"
+            android:showText="false"
+            android:text="LAMP STATUS"
+            android:textAlignment="center"
+            android:textColor="#F5F8F8"
+            android:textOff="LAMP OFF"
+            android:textOn="LAMP ON"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView111"
+            tools:text="LAMP STATUS" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00B8D4"
+            android:text="LAMPS"
+            android:textAlignment="center"
+            android:textColor="#F5F2F2"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#00B8D4"
+            android:text="LAMP 1"
+            android:textAlignment="center"
+            android:textColor="#F5F2F2"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLampThree" />
+
+        <TextView
+            android:id="@+id/textViewLampOne"
+            android:layout_width="263dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginBottom="10dp"
+            android:background="#40C4FF"
+            android:text="LAMP 1 []"
+            android:textAlignment="center"
+            android:textColor="#F7FAFA"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewLampTwo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textViewLampTwo"
+            android:layout_width="263dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginBottom="10dp"
+            android:background="#40C4FF"
+            android:text="LAMP 2 []"
+            android:textAlignment="center"
+            android:textColor="#F7FAFA"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewLampThree"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLampOne" />
+
+        <TextView
+            android:id="@+id/textViewLampThree"
+            android:layout_width="263dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="74dp"
+            android:background="#40C4FF"
+            android:text="LAMP 3 []"
+            android:textAlignment="center"
+            android:textColor="#F7FAFA"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLampTwo" />
+
+        <Switch
+            android:id="@+id/switchLamp1"
+            android:layout_width="295dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="58dp"
+            android:background="#40C4FF"
+            android:showText="false"
+            android:text="LAMP STATUS"
+            android:textAlignment="center"
+            android:textColor="#F5F8F8"
+            android:textOff="LAMP OFF"
+            android:textOn="LAMP ON"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:text="LAMP STATUS" />
+
+        <SeekBar
+            android:id="@+id/seekBarBrightnessLampOne"
+            android:layout_width="384dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:max="255"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBrightnessLampOne" />
+
+        <SeekBar
+            android:id="@+id/seekBarHueLampOne"
+            android:layout_width="384dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHueLampOne" />
+
+        <TextView
+            android:id="@+id/tvBrightnessLampOne"
+            android:layout_width="294dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="59dp"
+            android:autoText="false"
+            android:background="#40C4FF"
+            android:text="BRIGHTNESS: "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchLamp1" />
+
+        <TextView
+            android:id="@+id/tvHueLampOne"
+            android:layout_width="294dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="58dp"
+            android:autoText="false"
+            android:background="#40C4FF"
+            android:text="HUE: "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarBrightnessLampOne" />
+
+        <TextView
+            android:id="@+id/textView111"
+            android:layout_width="411dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="5dp"
+            android:autoText="false"
+            android:background="#00B8D4"
+            android:text="LAMP 2"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLampOne" />
+
+        ///////////////////// LAMP 3 //////////////////////////////
+
+        <Switch
+            android:id="@+id/switchLampThree"
+            android:layout_width="295dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="51dp"
+            android:background="#40C4FF"
+            android:showText="false"
+            android:text="LAMP STATUS"
+            android:textAlignment="center"
+            android:textColor="#F5F8F8"
+            android:textOff="LAMP OFF"
+            android:textOn="LAMP ON"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            tools:text="LAMP STATUS" />
+
+        <TextView
+            android:id="@+id/tvBrightnessLampThree"
+            android:layout_width="294dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="52dp"
+            android:autoText="false"
+            android:background="#40C4FF"
+            android:text="BRIGHTNESS: "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchLampThree" />
+
+        <SeekBar
+            android:id="@+id/seekBarBrightnessLampThree"
+            android:layout_width="384dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBrightnessLampThree" />
+
+        <TextView
+            android:id="@+id/tvHueLampThree"
+            android:layout_width="294dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="51dp"
+            android:autoText="false"
+            android:background="#40C4FF"
+            android:text="HUE: "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarBrightnessLampThree" />
+
+        <SeekBar
+            android:id="@+id/seekBarHueLampThree"
+            android:layout_width="384dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHueLampThree" />
+
+        /////////////////// GROUP //////////////////////////
+
+        <TextView
+            android:id="@+id/textView66"
+            android:layout_width="411dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="5dp"
+            android:autoText="false"
+            android:background="#00B8D4"
+            android:text="SET GROUP CONFIG"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLampThree" />
+
+        <Switch
+            android:id="@+id/switchGroup"
+            android:layout_width="295dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="51dp"
+            android:background="#40C4FF"
+            android:showText="false"
+            android:text="GROUP STATUS"
+            android:textAlignment="center"
+            android:textColor="#F5F8F8"
+            android:textOff="GROUP OFF"
+            android:textOn="GROUP ON"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView66" />
+
+        <TextView
+            android:id="@+id/tvBrightnessGroup"
+            android:layout_width="294dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="52dp"
+            android:autoText="false"
+            android:background="#40C4FF"
+            android:text="BRIGHTNESS: "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchGroup" />
+
+        <SeekBar
+            android:id="@+id/seekBarBrightnessGroup"
+            android:layout_width="384dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBrightnessGroup" />
+
+        <TextView
+            android:id="@+id/tvHueGroup"
+            android:layout_width="294dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="51dp"
+            android:autoText="false"
+            android:background="#40C4FF"
+            android:text="HUE: "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FCFCFD"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarBrightnessGroup" />
+
+        <SeekBar
+            android:id="@+id/seekBarHueGroup"
+            android:layout_width="384dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:min="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHueGroup" />
+
+        ///////////// UPDATE BUTTONS //////////////////
+
+
+        <Button
+            android:id="@+id/buttonLampOne"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="#0091EA"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:textAlignment="center"
+            android:textColor="#18FFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            android:text="SET LAMP 1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarHueLampOne" />
+
+        <Button
+            android:id="@+id/buttonLampTwo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="#0091EA"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:textAlignment="center"
+            android:textColor="#18FFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            android:text="SET LAMP 2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarHueLampTwo" />
+
+        <Button
+            android:id="@+id/buttonLampThree"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="#0091EA"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:textAlignment="center"
+            android:textColor="#18FFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            android:text="SET LAMP 3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarHueLampThree" />
+
+        <Button
+            android:id="@+id/buttonGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#0091EA"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:text="SET GROUP"
+            android:textAlignment="center"
+            android:textColor="#18FFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarHueGroup" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonGroup" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
+
+
+
 
 
 
